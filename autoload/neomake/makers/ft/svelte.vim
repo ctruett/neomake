@@ -6,7 +6,7 @@ endfunction
 function! neomake#makers#ft#svelte#svelte_check() abort
     let maker = {
                 \ 'exe': 'svelte-check',
-                \ 'args': ['--output', 'machine'],
+                \ 'args': ['--output', 'machine', '--threshold', 'error', '--tsconfig', '%:/jsconfig.json', '--workspace', '%:'],
                 \ 'append_file': 0,
                 \ 'errorformat':
                     \ '%E\\d%\\+ ERROR \"%f\" %l:%c \"%m\",' .
