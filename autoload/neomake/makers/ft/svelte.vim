@@ -4,9 +4,10 @@ function! neomake#makers#ft#svelte#EnabledMakers() abort
 endfunction
 
 function! neomake#makers#ft#svelte#svelte_check() abort
+    let root_dir = fnamemodify(neomake#utils#FindGlobFile('svelte.config.js'), ':h')
     let maker = {
                 \ 'exe': 'svelte-check',
-                \ 'args': ['--output', 'machine', '--threshold', 'error', '--tsconfig', '%:/jsconfig.json', '--workspace', '%:'],
+                \ 'args': ['--output', 'machine', '--threshold', 'error', '--tsconfig', root_dir .. '/jsconfig.json', '--workspace', root_dir],
                 \ 'append_file': 0,
                 \ 'errorformat':
                     \ '%E\\d%\\+ ERROR \"%f\" %l:%c \"%m\",' .
